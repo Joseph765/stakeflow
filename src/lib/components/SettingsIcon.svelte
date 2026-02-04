@@ -6,22 +6,12 @@
 		animate = false,
 		class: className = ''
 	} = $props();
-
-	function handleMouseEnter() {
-		animate = true;
-	}
-
-	function handleMouseLeave() {
-		animate = false;
-	}
 </script>
 
 <div
 	class={className}
 	aria-label="settings"
 	role="img"
-	onmouseenter={handleMouseEnter}
-	onmouseleave={handleMouseLeave}
 >
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +39,7 @@
         width: 24px;
 		height: 24px;
 	}
-    
+
 	.settings-gear {
 		transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		transform-origin: center;

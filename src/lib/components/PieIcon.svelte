@@ -6,22 +6,12 @@
 		animate = false,
 		class: className = ''
 	} = $props();
-
-	function handleMouseEnter() {
-		animate = true;
-	}
-
-	function handleMouseLeave() {
-		animate = false;
-	}
 </script>
 
 <div
 	class={className}
 	aria-label="chart-pie"
 	role="img"
-	onmouseenter={handleMouseEnter}
-	onmouseleave={handleMouseLeave}
 >
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +40,7 @@
         width: 24px;
 		height: 24px;
 	}
-    
+
 	.chart-pie-icon {
 		overflow: visible;
 	}

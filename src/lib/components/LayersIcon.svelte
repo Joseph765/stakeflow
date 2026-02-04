@@ -6,17 +6,9 @@
 		animate = false,
 		class: className = ''
 	} = $props();
-
-	function handleMouseEnter() {
-		if (animate) return;
-		animate = true;
-		setTimeout(() => {
-			animate = false;
-		}, 300);
-	}
 </script>
 
-<div class={className} aria-label="layers" role="img" onmouseenter={handleMouseEnter}>
+<div class={className} aria-label="layers" role="img">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
@@ -52,7 +44,7 @@
 		width: 24px;
 		height: 24px;
 	}
-	
+
 	.layers-icon {
 		overflow: visible;
 	}
