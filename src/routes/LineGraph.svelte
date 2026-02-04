@@ -5,25 +5,34 @@
     /** @type { string } */
     export let id = "1";
 
+    export let data;
+
+    /** @type { boolean } */
+    export let danger = false;
+
     onMount(() => {
+        console.log(data);
         /** @type { any } */
         const ctx = document.getElementById(`smallLineGraph${id}`);
         const root = window.getComputedStyle(document.body);
         const successColor = root.getPropertyValue('--v-color-success');
-        const secondarySuccessColor = root.getPropertyValue("--v-success-2");
+        const success2 = root.getPropertyValue("--v-success-2");
+        const dangerColor = root.getPropertyValue('--v-color-danger');
+        const danger2 = root.getPropertyValue("--v-danger-2");
     
         new Chart(ctx, {
-            type: 'line',
+            type: "line",
             data: {
-                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                labels: data.map(() => ""),
                 datasets: [{
                     label: "Balance",
-                    data: [65, 12, 80, 81, 56, 55, 99, 99],
-                    borderColor: successColor,
+                    data: data,
+                    borderColor: danger ? dangerColor : successColor,
                     pointRadius: 0,
                     fill: true,
-                    backgroundColor: secondarySuccessColor,
-                    tension: 0.3
+                    backgroundColor: danger ? danger2 : success2,
+                    tension: 0.3,
+                    borderWidth: 1.5,
                 }]
             },
             options: {
@@ -38,8 +47,10 @@
                       display: false  
                     },
                     y: {
-                        beginAtZero: true,
-                        display: false
+                        // beginAtZero: true,
+                        display: false,
+                        min: Math.min(...data) - 10,
+                        max: Math.max(...data) + 10,
                     }
                 },
             },

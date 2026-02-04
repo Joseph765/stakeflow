@@ -14,7 +14,6 @@
     import Balance from "./Balance.svelte";
     import Assets from "./Assets.svelte";
     import LineGraph from "./LineGraph.svelte";
-    import NegativeLineGraph from "./NegativeLineGraph.svelte";
     import { formatUSD, formatPercentage } from "$lib/util";
 
     let { data } = $props();
@@ -57,7 +56,6 @@
                 </TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>#</TableHead>
                         <TableHead>Name</TableHead>
                         <TableHead align="end">Price</TableHead>
                         <TableHead align="end">24hr</TableHead>
@@ -68,40 +66,35 @@
                 <TableBody>
                     {#each data.coins as coin, i}
                         <TableRow>
-                            <TableCell>{coin.id}</TableCell>
                             <TableCell>
                                 <Flex gap="m" align="center">
-                                    {#if data.logos[coin.id]}
-                                        <img src={data.logos[coin.id].logo} alt="Crypto Logo" style="width: 32px; height: 32px;"/>
+                                    {#if coin.image}
+                                        <img src={coin.image} alt="Crypto Logo" style="width: 32px; height: 32px;"/>
                                     {/if}
                                     <Flex direction="column" gap="none">
                                         <Text size="l">{coin.name}</Text>
-                                        <Text variant="weak">{coin.symbol}</Text>
+                                        <Text variant="weak">{coin.symbol.toUpperCase()}</Text>
                                     </Flex>
                                 </Flex>
                             </TableCell>
                             <TableCell>
-                                <Text size="l" align="end" style="font-variant-numeric: tabular-nums lining-nums;">{formatUSD(coin.quote.USD.price)}</Text>
+                                <Text size="l" align="end" style="font-variant-numeric: tabular-nums lining-nums;">{formatUSD(coin.high_24h)}</Text>
                             </TableCell>
                             <TableCell>
                                 <Text 
                                     size="l"
                                     align="end"
-                                    style={(coin.quote.USD.percent_change_24h / 100) < 0 ? "color: var(--v-color-danger); font-variant-numeric: tabular-nums lining-nums;" : "color: var(--v-color-success); font-variant-numeric: tabular-nums lining-nums;"}
+                                    style={(coin.price_change_percentage_24h / 100) < 0 ? "color: var(--v-color-danger); font-variant-numeric: tabular-nums lining-nums;" : "color: var(--v-color-success); font-variant-numeric: tabular-nums lining-nums;"}
                                 >
-                                    {(coin.quote.USD.percent_change_24h / 100) < 0 ? "" : "+"}{formatPercentage(coin.quote.USD.percent_change_24h / 100)}
+                                    {(coin.price_change_percentage_24h / 100) < 0 ? "" : "+"}{formatPercentage(coin.price_change_percentage_24h / 100)}
                                 </Text>
                             </TableCell>
                             <TableCell>
-                                <Text size="l" align="end" style="font-variant-numeric: tabular-nums lining-nums;">{formatUSD(coin.quote.USD.market_cap, true)}</Text>
+                                <Text size="l" align="end" style="font-variant-numeric: tabular-nums lining-nums;">{formatUSD(coin.market_cap, true)}</Text>
                             </TableCell>
                             <TableCell>
                                 <Flex justify="end">
-                                    {#if (coin.quote.USD.percent_change_24h / 100) < 0 }
-                                        <NegativeLineGraph id={i.toLocaleString()} />
-                                    {:else}
-                                        <LineGraph id={i.toLocaleString()} />
-                                    {/if}
+                                    <LineGraph id={i.toLocaleString()} data={coin.sparkline_in_7d.price} danger={(coin.price_change_percentage_7d_in_currency / 100) < 0} />
                                 </Flex>
                             </TableCell>
                         </TableRow>
