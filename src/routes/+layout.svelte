@@ -22,7 +22,7 @@
         <button class="mobile-menu-button" onclick={() => console.log("open menu")} aria-label="open mobile menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
         </button>
-        <div class="mobile-logo">SF</div>
+        <a class="mobile-logo" href="/">SF</a>
         <div></div>
     </div>
     <div class="left-nav-wrapper">
@@ -59,10 +59,13 @@
         --v-container-width: 76rem;
         display: flex;
         height: 100vh;
+        overflow-x: hidden;
     }
 
     .header {
+        position: relative;
         display: none;
+        z-index: 9999;
     }
 
     .left-nav-wrapper {
@@ -103,14 +106,24 @@
         border: none;
         padding: 0;
         margin: 0;
+        color: var(--v-color-text);
     }
 
     .mobile-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-80%);
+        width: fit-content;
         font-family: var(--v-font);
         font-weight: var(--v-font-weight-black);
         font-size: var(--v-font-size-3xl);
         line-height: 1;
         letter-spacing: var(--v-letter-spacing-3xl);
+        background-color: var(--v-accent-4);
+        padding: var(--v-space-s);
+        border-radius: var(--v-radius);
+        color: var(--v-color-text);
+        text-decoration: none;
     }
 
     .nav-item {
@@ -135,7 +148,8 @@
 
     .content {
         max-width: var(--v-container-width);
-        padding: 2.5rem var(--v-space-2xl) var(--v-space-2xl) var(--v-space-2xl);
+        width: 100%;
+        padding: 2.1rem var(--v-space-2xl) var(--v-space-2xl) var(--v-space-2xl);
         margin-inline: auto;
     }
 

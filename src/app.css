@@ -49,6 +49,7 @@
 /* Table */
 .v-table-wrapper {
     background-color: var(--v-color-background);
+    width: calc(100% - (var(--v-space-l) * 2));
     /* border: 1px solid var(--v-color-border);
     border-radius: var(--v-radius);
     padding: 0 var(--v-space-m) 0 var(--v-space-m);
@@ -59,6 +60,15 @@
     border-spacing: 0 var(--v-space-m); 
     border-collapse: separate;
     table-layout: fixed;
+    /* min-width: 46rem; */
+    /* width: 30rem; */
+}
+
+@media (max-width: 900px) {
+    .v-table {
+        /* table-layout: auto; */
+        width: max-content;
+    }
 }
 
 .v-table-caption {

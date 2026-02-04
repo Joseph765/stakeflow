@@ -39,11 +39,17 @@
             data: data,
             options: {
                 responsive: true,
+                animation: {
+                    duration: 500,
+                    easing: 'linear',
+                    animateRotate: true,
+                    animateScale: false
+                },
                 maintainAspectRatio: true,
                 aspectRatio: 2,
                 cutout: '75%',
-                circumference: 180,
-                rotation: -90,
+                // circumference: 180,
+                // rotation: -90,
                 plugins: {
                     legend: { display: false },
                     tooltip: {
@@ -79,7 +85,7 @@
     });
 </script>
 
-<Card style="width: 100%;">
+<Card style="width: 100%; min-height: 16rem;">
     <Flex direction="column" gap="s" justify="between" style="height: 100%;">
         <Text variant="default" size="2xl" weight="bold">Assets</Text>
         <Flex justify="between" align="center">
@@ -119,4 +125,4 @@
         height: 16px;
         border-radius: 100%;
     }
-</style>
+</style> 
