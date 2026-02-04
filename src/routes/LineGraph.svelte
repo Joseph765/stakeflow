@@ -11,7 +11,6 @@
     export let danger = false;
 
     onMount(() => {
-        console.log(data);
         /** @type { any } */
         const ctx = document.getElementById(`smallLineGraph${id}`);
         const root = window.getComputedStyle(document.body);

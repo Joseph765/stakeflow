@@ -65,7 +65,6 @@
                         callbacks: {
                             label: function(context) {
                                 const val = context.parsed;
-                                console.log(val);
                                 let percentage = "0%";
                                 if (typeof val === "number") {
                                     percentage = formatPercentage(val / 100);

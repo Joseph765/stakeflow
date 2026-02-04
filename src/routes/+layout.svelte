@@ -1,8 +1,20 @@
 <script>
 	import "$volt/css/index.css";
 	import "../app.css";
+    import { HistoryIcon, LayersIcon, PieIcon, SettingsIcon } from "$lib/components";
 
 	let { children } = $props();
+
+    let animate = $state("")
+
+    /** @param { string } iconName */
+    function handleMouseEnter(iconName) {
+		if (animate === iconName) return;
+		animate = iconName;
+		setTimeout(() => {
+			animate = "";
+		}, 300);
+	}
 </script>
 
 <div class="layout">
@@ -17,20 +29,20 @@
         <div class="left-nav">
             <div class="logo">StakeFlow</div>
             <nav>
-                <a href="/" class="nav-item is-active">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>
+                <a href="/" class="nav-item is-active" onmouseenter={() => animate = "pie"} onmouseleave={() => animate = ""}>
+                    <PieIcon animate={animate === "pie"} />
                     Dashboard
                 </a>
-                <a href="/" class="nav-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>
+                <a href="/" class="nav-item" onmouseenter={() => handleMouseEnter("layers")} onmouseleave={() => animate = ""}>
+                    <LayersIcon animate={animate === "layers"} />
                     Assets
                 </a>
-                <a href="/" class="nav-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/><path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/></svg>
+                <a href="/" class="nav-item" onmouseenter={() => animate = "history"} onmouseleave={() => animate = ""}>
+                    <HistoryIcon animate={animate === "history"} />
                     Transactions
                 </a>
-                <a href="/" class="nav-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+                <a href="/" class="nav-item" onmouseenter={() => animate = "settings"} onmouseleave={() => animate = ""}>
+                    <SettingsIcon animate={animate === "settings"} />
                     Settings
                 </a>
             </nav>
