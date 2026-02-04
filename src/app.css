@@ -1,0 +1,109 @@
+
+/* Tokens */
+:root {
+    --v-radius: 16px;
+    --v-gradient-1: linear-gradient(90deg, var(--v-accent-1) 0%, var(--v-accent-2) 50%, var(--v-accent-3) 100%);
+    --v-gradient-2: linear-gradient(90deg, var(--v-accent-2) 0%, var(--v-accent-5) 50%, var(--v-accent-6) 100%);
+}
+
+/* Badge */
+.v-badge {
+    height: min-content;
+
+    background-color: var(--v-color-surface-raised);
+    border: 2px solid var(--v-gray-4);
+}
+
+/* Banner */
+.v-banner {
+    gap: var(--v-space-s);
+    border: none;
+}
+
+/* Card */
+.v-card {
+    border: none;
+}
+
+.v-card-content {
+    height: calc(100% - var(--v-space-xl));
+}
+
+/* Container */
+.v-container {
+    padding-block: 0;
+    /* width: 100%; */
+    padding-block-start: 3rem;
+}
+
+.v-container.is-align-center {
+    margin: 0;
+    margin-inline: auto;
+}
+
+/* Nav */
+.v-nav-item[aria-current="true"] {
+    border-inline-start: 4px solid var(--v-accent-10);
+}
+
+/* Table */
+.v-table-wrapper {
+    background-color: var(--v-color-background);
+    /* border: 1px solid var(--v-color-border);
+    border-radius: var(--v-radius);
+    padding: 0 var(--v-space-m) 0 var(--v-space-m);
+    width: -webkit-fill-available; */
+}
+
+.v-table {
+    border-spacing: 0 var(--v-space-m); 
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+.v-table-caption {
+    padding-block: var(--v-space-m) 0;
+}
+
+.v-table-body {
+    padding-inline: var(--v-space-m);
+}
+
+.v-table-head {
+    font-size: var(--v-font-size-l);
+    background-color: var(--v-color-background);
+    border: none;
+    padding: var(--v-space-xs) var(--v-space-m);
+}
+
+.v-table-cell {
+    border: none;
+    background-color: var(--v-color-surface);
+    font-size: var(--v-font-size-l);
+    /* padding: var(--v-space-m) var(--v-space-l); */
+}
+
+.v-table-cell:first-child {
+    border-radius: var(--v-radius) 0 0 var(--v-radius);
+}
+
+.v-table-cell:last-child {
+    border-radius: 0 var(--v-radius) var(--v-radius) 0;
+}
+
+
+@media (pointer: fine) {
+    .v-table.is-interactive .v-table-row:hover {
+        cursor: pointer;
+    }
+
+    .v-table.is-interactive .v-table-row:hover .v-table-cell {
+        background-color: var(--v-gray-3);
+        /* border-block-end: 4px solid var(--v-color-text); */
+        /* box-shadow: 4px 2px 1px var(--v-color-text); */
+    }
+
+    /* .v-table.is-interactive .v-table-row:hover .v-table-cell:last-child {
+        border-inline-end: 4px solid var(--v-color-text);
+    } */
+}
