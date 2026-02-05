@@ -48,8 +48,8 @@
                 maintainAspectRatio: true,
                 aspectRatio: 2,
                 cutout: '75%',
-                // circumference: 180,
-                // rotation: -90,
+                circumference: 180,
+                rotation: -90,
                 plugins: {
                     legend: { display: false },
                     tooltip: {
@@ -85,44 +85,85 @@
     });
 </script>
 
-<Card style="width: 100%; min-height: 16rem;">
-    <Flex direction="column" gap="s" justify="between" style="height: 100%;">
+<div class="assets-card">
+    <Flex direction="column" gap="l" justify="between" style="height: 100%;">
         <Text variant="default" size="2xl" weight="bold">Assets</Text>
         <Flex justify="between" align="center">
-            <Flex direction="column" style="width: max-content;">
-                <Flex align="center">
-                    <div class="key-color" style="background-color: var(--v-accent-5)"></div>
-                    <Text size="l">Tether - 12%</Text>
-                </Flex>
-                <Flex align="center">
-                    <div class="key-color" style="background-color: var(--v-accent-7)"></div>
-                    <Text size="l">Ethereum - 25%</Text>
-                </Flex>
-                <Flex align="center">
-                    <div class="key-color" style="background-color: var(--v-accent-9)"></div>
-                    <Text size="l">Bitcoin - 43%</Text>
-                </Flex>
-                <Flex align="center">
-                    <div class="key-color" style="background-color: var(--v-accent-11)"></div>
-                    <Text size="l">XRP - 20%</Text>
-                </Flex>
-            </Flex>
-            <div class="chart-wrapper">
-                <canvas id="assetsChart"></canvas>
+            <div class="key-chart-pair">
+                <div class="keys">
+                    <div class="key-wrapper">
+                        <div class="key-color" style="background-color: var(--v-accent-5)"></div>
+                        <Text size="l">Tether - 12%</Text>
+                    </div>
+                    <div class="key-wrapper">
+                        <div class="key-color" style="background-color: var(--v-accent-7)"></div>
+                        <Text size="l">Ethereum - 25%</Text>
+                    </div>
+                    <div class="key-wrapper">
+                        <div class="key-color" style="background-color: var(--v-accent-9)"></div>
+                        <Text size="l">Bitcoin - 43%</Text>
+                    </div>
+                    <div class="key-wrapper">
+                        <div class="key-color" style="background-color: var(--v-accent-11)"></div>
+                        <Text size="l">XRP - 20%</Text>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="assetsChart"></canvas>
+                </div>
             </div>
         </Flex>
     </Flex>
-</Card>
+</div>
 
 <style>
+    .assets-card {
+        container: assets-card / inline-size;
+        background-color: var(--v-color-surface);
+        padding: var(--v-space-m);
+        border-radius: var(--v-radius);
+        min-height: 16rem;
+    }
+    
     .chart-wrapper {
         height: 10rem;
-        width: 60%;
+    }
+
+    .key-chart-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: var(--v-space-m);
+    }
+
+    .keys {
+        display: flex;
+        flex-direction: column;
+        gap: var(--v-space-m);
     }
 
     .key-color {
         width: 16px;
         height: 16px;
         border-radius: 100%;
+    }
+
+    .key-wrapper {
+        display: flex;
+        align-items: center;
+        gap: var(--v-space-s);
+    }
+
+    @container assets-card (max-width: 486px) {
+        .key-chart-pair {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .keys {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: var(--v-space-s) var(--v-space-m);
+        }
     }
 </style> 

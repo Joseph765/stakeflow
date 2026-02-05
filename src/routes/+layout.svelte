@@ -56,10 +56,9 @@
 
 <style>
     .layout {
-        --v-container-width: 76rem;
+        --v-container-width: 86rem;
         display: flex;
         height: 100vh;
-        overflow-x: hidden;
     }
 
     .header {
@@ -73,7 +72,7 @@
         left: 0;
         display: flex;
         justify-content: end;
-        width: calc(((100vw - var(--v-container-width)) / 2) - var(--v-space-2xl));
+        width: calc(((100vw - var(--v-container-width)) / 2));
         min-width: 18rem;
     }
     
@@ -146,13 +145,6 @@
         background: linear-gradient(90deg, var(--v-accent-2) 0%, var(--v-accent-5) 50%, var(--v-accent-6) 100%);
     }
 
-    .content {
-        max-width: var(--v-container-width);
-        width: 100%;
-        padding: 2.1rem var(--v-space-2xl) var(--v-space-2xl) var(--v-space-2xl);
-        margin-inline: auto;
-    }
-
     @media (pointer: fine) {
         .nav-item:hover {
             background-color: var(--v-gray-4);
@@ -163,12 +155,6 @@
             background: linear-gradient(90deg, var(--v-accent-6) 0%, var(--v-accent-9) 50%, var(--v-accent-10) 100%);
             background-size: 400% 100%;
             animation: gradient-animation 3s ease infinite;
-        }
-    }
-
-    @media (max-width: 1872px) {
-        .content {
-            margin-inline-start: 16rem;
         }
     }
 
@@ -190,11 +176,12 @@
             display: none;
         }
 
-        .content {
+        /* .content {
             max-width: 100%;
+            width: auto;
             margin: 0;
             padding: 5rem var(--v-space-l);
-        }
+        } */
     }
     
     @keyframes gradient-animation {
