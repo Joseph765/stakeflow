@@ -7,6 +7,9 @@
 
     let animate = $state("")
 
+    /** @type { boolean } */
+    let open = $state(false);
+
     /** @param { string } iconName */
     function handleMouseEnter(iconName) {
 		if (animate === iconName) return;
@@ -19,13 +22,13 @@
 
 <div class="layout">
     <div class="header">
-        <button class="mobile-menu-button" onclick={() => console.log("open menu")} aria-label="open mobile menu">
+        <button class="mobile-menu-button" onclick={() => open = !open} aria-label="open mobile menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
         </button>
         <a class="mobile-logo" href="/">SF</a>
         <div></div>
     </div>
-    <div class="left-nav-wrapper">
+    <div class="left-nav-wrapper {open ? "is-open" : ""}">
         <div class="left-nav">
             <div class="logo">StakeFlow</div>
             <nav>
@@ -174,15 +177,28 @@
         }
 
         .left-nav-wrapper {
+            z-index: 1000;
+            top: 4rem;
+            padding-block-start: var(--v-space-l);
+            background-color: var(--v-color-surface);
+            display: none;
+            height: 100vh;
+            border-inline-end: 1px solid var(--v-color-border);
+            justify-content: start;
+        }
+
+        .logo {
             display: none;
         }
 
-        /* .content {
-            max-width: 100%;
-            width: auto;
+        .left-nav {
+            height: 100%;
             margin: 0;
-            padding: 5rem var(--v-space-l);
-        } */
+        }
+
+        .left-nav-wrapper.is-open {
+            display: flex;
+        }
     }
     
     @keyframes gradient-animation {
