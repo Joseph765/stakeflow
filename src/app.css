@@ -112,6 +112,10 @@
     font-size: var(--v-font-size-l);
 }
 
+.v-table-head {
+    white-space: nowrap;
+}
+
 .v-table-cell:first-child {
     border-radius: var(--v-radius) 0 0 var(--v-radius);
 }

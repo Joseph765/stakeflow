@@ -34,6 +34,8 @@
             }]
         };
 
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
         new Chart(ctx, {
             type: 'doughnut',
             data: data,
@@ -53,6 +55,7 @@
                 plugins: {
                     legend: { display: false },
                     tooltip: {
+                        enabled: !isTouchDevice,
                         backgroundColor: gray5,
                         padding: 16,
                         titleFont: {
@@ -124,7 +127,7 @@
         border-radius: var(--v-radius);
         min-height: 16rem;
     }
-    
+
     .chart-wrapper {
         height: 10rem;
     }

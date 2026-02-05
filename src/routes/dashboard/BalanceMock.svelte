@@ -59,6 +59,8 @@
                 }
             }
         };
+
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
         new Chart(ctx, {
             type: 'line',
@@ -78,6 +80,7 @@
                         display: false
                     },
                     tooltip: {
+                        enabled: !isTouchDevice,
                         backgroundColor: gray5,
                         padding: 16,
                         titleFont: {
@@ -147,7 +150,6 @@
 <style>
     .card {
         position: relative;
-        /* width: calc(100% - (var(--v-space-l) * 2)); */
         width: 100%;
         background-color: var(--v-color-surface);
         border-radius: var(--v-radius);
