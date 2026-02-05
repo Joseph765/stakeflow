@@ -148,13 +148,14 @@
     @media (pointer: fine) {
         .nav-item:hover {
             background-color: var(--v-gray-4);
-            cursor: pointer
+            cursor: pointer;
+            transition: background-color 0.2s; 
         }
 
         .nav-item.is-active:hover {
             background: linear-gradient(90deg, var(--v-accent-6) 0%, var(--v-accent-9) 50%, var(--v-accent-10) 100%);
             background-size: 400% 100%;
-            animation: gradient-animation 3s ease infinite;
+            animation: gradient-animation 2s ease infinite;
         }
     }
 
