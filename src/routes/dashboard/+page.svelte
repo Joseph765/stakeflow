@@ -44,9 +44,9 @@
                 Connect Wallet
             </Button>
         </Flex>
-        <Banner>
+        <!-- <Banner>
             Viewing mock data — <Link href="#">connect wallet</Link> for real crypto and wallet data.
-        </Banner>
+        </Banner> -->
 
         <Flex direction="column" gap="m">
             <div class="cards">
