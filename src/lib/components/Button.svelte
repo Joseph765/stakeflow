@@ -75,11 +75,6 @@
         text-decoration: none;
     }
 
-    /* On hover: reveal from right to left (or left to right — see note below) */
-    .button-wrapper:hover .button-overlay {
-        clip-path: inset(0 0 0 0);
-    }
-
     .button {
         display: flex;
         align-items: center;
@@ -163,6 +158,10 @@
     }
 
     @media (pointer: fine) {
+        .button-wrapper:hover .button-overlay {
+            clip-path: inset(0 0 0 0);
+        }
+
         .button.is-secondary:hover {
             background-color: var(--v-accent-5);
             color: var(--v-color-text);
