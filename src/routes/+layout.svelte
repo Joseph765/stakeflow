@@ -7,8 +7,8 @@
 
     let animate = $state("")
 
-    /** @type { boolean } */
-    let open = $state(false);
+    /** @type { string } */
+    let navClass = $state("");
 
     /** @param { string } iconName */
     function handleMouseEnter(iconName) {
@@ -22,13 +22,13 @@
 
 <div class="layout">
     <div class="header">
-        <button class="mobile-menu-button" onclick={() => open = !open} aria-label="open mobile menu">
+        <button class="mobile-menu-button" onclick={() => navClass === "is-open" ? navClass = "is-closed" : navClass = "is-open"} aria-label="open mobile menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
         </button>
         <a class="mobile-logo" href="/">SF</a>
         <div></div>
     </div>
-    <div class="left-nav-wrapper {open ? "is-open" : ""}">
+    <div class="left-nav-wrapper {navClass}">
         <div class="left-nav">
             <div class="logo">StakeFlow</div>
             <nav>
@@ -104,6 +104,7 @@
     }
 
     .mobile-menu-button {
+        touch-action: manipulation;
         background: transparent;
         border: none;
         padding: 0;
@@ -114,7 +115,7 @@
     .mobile-logo {
         position: absolute;
         left: 50%;
-        transform: translateX(-80%);
+        transform: translateX(-50%);
         width: fit-content;
         font-family: var(--v-font);
         font-weight: var(--v-font-weight-black);
@@ -177,12 +178,13 @@
         }
 
         .left-nav-wrapper {
-            z-index: 1000;
+            z-index: 1;
             top: 4rem;
+            left: -16rem;
             padding-block-start: var(--v-space-l);
             background-color: var(--v-color-surface);
-            display: none;
-            height: 100vh;
+            height: 100dvh;
+            min-width: 16rem;
             border-inline-end: 1px solid var(--v-color-border);
             justify-content: start;
         }
@@ -192,12 +194,18 @@
         }
 
         .left-nav {
-            height: 100%;
             margin: 0;
         }
 
         .left-nav-wrapper.is-open {
             display: flex;
+            animation: slideIn 0.2s ease-out;
+            left: 0;
+        }
+
+        .left-nav-wrapper.is-closed {
+            animation: slideOut 0.2s ease-out;
+            left: -16rem;
         }
     }
     
@@ -210,6 +218,24 @@
         }
         100% {
             background-position: 0% 50%;
+        }
+    }
+
+    @keyframes slideIn {
+        0% {
+            left: -18rem;
+        }
+        100% {
+            left: 0;
+        }
+    }
+
+    @keyframes slideOut {
+        0% {
+            left: 0;
+        }
+        100% {
+            left: -18rem;
         }
     }
 </style>
